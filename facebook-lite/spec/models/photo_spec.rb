@@ -1,1 +1,0 @@
-photo_spec.rb
