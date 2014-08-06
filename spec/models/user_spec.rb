@@ -105,8 +105,9 @@ RSpec.describe User, :type => :model do
     end
 
     it 'can upload a new photo' do 
-      @user.photos.create(description: "Sunrise")
-      expect(@user.photos.last.description).to eq("Sunrise")
+      @user.uploaded_photos.create(description: "Sunrise")
+      expect(@user.uploaded_photos.last.description).to eq("Sunrise")
+      expect(@user.uploaded_photos.last.uploader_id).to eq(@user.id)
     end
   end
     
