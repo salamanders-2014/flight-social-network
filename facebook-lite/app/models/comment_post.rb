@@ -1,4 +1,4 @@
-class CommentPosts < ActiveRecord::Base
+class CommentPost < ActiveRecord::Base
 
   belongs_to :post
   belongs_to :comment

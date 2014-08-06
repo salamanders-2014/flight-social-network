@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
+  # statuses
   has_many :statuses
+
+  # comments
   has_many :comments, foreign_key: "commenter_id"
+
+  # profile pics
   has_many :user_profile_pics
   has_many :profile_pics, through: :user_profile_pics, source: :photo
 
@@ -8,7 +13,5 @@ class User < ActiveRecord::Base
   has_many :posts, foreign_key: "poster_id"
 
   # has many photos
-
-  has_many :post_photos, through: :posts
-  has_many :photos, through: :post_photos, source: :photo  
+  has_many :photos, through: :posts
 end
