@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: facebook-lite_development
+  database: flight-social-network_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: facebook-lite_test
+  database: flight-social-network_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: facebook-lite_production
-  username: facebook-lite
-  password: <%= ENV['FACEBOOK-LITE_DATABASE_PASSWORD'] %>
+  database: flight-social-network_production
+  username: flight-social-network
+  password: <%= ENV['FLIGHT-SOCIAL-NETWORK_DATABASE_PASSWORD'] %>
