@@ -21,4 +21,10 @@ config/secrets.yml
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+
 .rvmrc
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 28e78704468c18f3073ae6fa14a97bf5cb064e5b
