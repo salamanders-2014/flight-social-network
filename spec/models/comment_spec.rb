@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Comment do
+RSpec.describe Comment, :type => :model do
 	
 	before do
 		@user = build(:user)
