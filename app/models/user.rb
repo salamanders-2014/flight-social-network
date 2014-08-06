@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   # has many posts
   has_many :posts, foreign_key: "poster_id"
 
-  # has many photos
+  # has many photos (in all posts)
   has_many :photos, through: :posts
+
+  # has many uploaded photos
+  has_many :uploaded_photos, class_name: "Photo", foreign_key: "uploader_id"
 end
