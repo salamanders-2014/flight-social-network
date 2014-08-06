@@ -10,4 +10,4 @@ script:
   - bundle exec rake
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database flight-social-network_test' -U postgres
+  - psql -c 'create database "flight-social-network_test"' -U postgres
