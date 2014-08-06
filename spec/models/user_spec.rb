@@ -85,26 +85,28 @@ RSpec.describe User, :type => :model do
     it 'can create a new status' do 
       @user.statuses.create(text: "I am happy")
       expect(@user.statuses.last.text).to eq("I am happy")
+      expect(@user.statuses.last.user_id).to eq(@user.id)
     end
 
     it 'can create a new comment' do 
       @user.comments.create(text: "Nice job")
       expect(@user.comments.last.text).to eq("Nice job")
+      expect(@user.comments.last.commenter_id).to eq(@user.id)
     end
 
-    it 'can create a new comment' do 
-      @user.comments.create(text: "Nice job")
-      expect(@user.comments.last.text).to eq("Nice job")
+    it 'can create a new profile pic' do 
+      @user.profile_pics.create(description: "Sunset")
+      expect(@user.profile_pics.last.description).to eq("Sunset")
     end
 
-    it 'can create a new comment' do 
-      @user.comments.create(text: "Nice job")
-      expect(@user.comments.last.text).to eq("Nice job")
+    it 'can create a new post' do 
+      @user.posts.create
+      expect(@user.posts.last.poster_id).to eq(@user.id)
     end
 
-    it 'can create a new comment' do 
-      @user.comments.create(text: "Nice job")
-      expect(@user.comments.last.text).to eq("Nice job")
+    it 'can upload a new photo' do 
+      @user.photos.create(description: "Sunrise")
+      expect(@user.photos.last.description).to eq("Sunrise")
     end
   end
     
