@@ -1,4 +1,4 @@
-flight-social-network
+Flight Social Network
 =====================
 
 Flight is a social networking playground where users post their profiles and show their pictures.
