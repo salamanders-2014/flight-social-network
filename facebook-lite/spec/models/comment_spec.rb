@@ -3,15 +3,22 @@ require 'rails_helper'
 RSpec.describe Comment do
 	
 	before do
-		@user = User.new(first_name: "John", last_name: "Doe", email: "john@example.com")
-		@post = Post.new()
-		@comment = Comment.new(text: "Best Birthday Party Eva", commenter: @user, post: @post)
+		@user = build(:user)
+		@post = build(:post)
+		@comment = build(:comment)
 	end
 
-	describe '#whatever' do
+	describe '#commenter' do
+		it 'should return the user who commented on the photo'
 	end
 
+	describe '#text' do
+		it 'validates text can not be blank'
+	end
 
+	describe '#post' do
+		it 'should return the post in a through relationship'
+	end
 
 
 end
