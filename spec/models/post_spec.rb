@@ -6,10 +6,6 @@ RSpec.describe Post, :type => :model do
     @user = User.create(first_name: "Si", last_name: "G", email: "s@gmail.com")
   end
 
-  after do
-    @user.destroy
-  end
-
   describe 'associations' do
     it "should have many photos" do
       t = Post.reflect_on_association(:photos)
