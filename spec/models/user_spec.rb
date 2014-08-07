@@ -4,12 +4,14 @@ RSpec.describe User, :type => :model do
 
   context 'attributes and validations' do
     before :each do 
-      @user1 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user1 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user2 = User.new(email: "quy2@dbc.com")
       @user3 = User.new
       @user4 = User.new(first_name: "Quy", last_name: "Tran", email: "qqqqqq")
       @user5 = User.new(first_name: "Quy", email: "quy@dbc.com")
       @user6 = User.new(last_name: "Tran", email: "quy@dbc.com")
+      @user7 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user8 = User.new(first_name: "Mike", last_name: "Tran", email: "quy@dbc.com", password: "654321")
     end
 
     after :each do 
@@ -35,6 +37,15 @@ RSpec.describe User, :type => :model do
 
     it 'should validates email format' do 
       expect{@user4.save!}.to raise_error
+    end
+
+    it 'should validates password presence' do 
+      expect{@user7.save!}.to raise_error
+    end
+
+    it 'should validates uniqueness of email' do
+      @user1.save! 
+      expect{@user8.save!}.to raise_error
     end
 
 
@@ -88,7 +99,7 @@ RSpec.describe User, :type => :model do
 
   context 'actual associations modification' do 
     before do 
-      @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user.save
     end
 
