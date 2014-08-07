@@ -6,11 +6,10 @@ RSpec.describe Comment, :type => :model do
 		@user_1 = User.create(first_name: "John", last_name: "Doe", email: "me@example.com")
 		@user_2 = User.create(first_name: "Kate", last_name: "Winslet", email: "you@example.com")
 		@post = Post.create(poster: @user_1)
-		@comment = Comment.create(commenter: @user_2, post: @post, text: "Happy Birthday Simon")
+		@comment = @post.comments.create(commenter: @user_2,text: "Happy Birthday Simon")
 	end
 
 	after do
-		@comment.destroy
 		@post.destroy
 		@user_1.destroy
 		@user_2.destroy
