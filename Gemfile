@@ -31,6 +31,10 @@ gem 'rails_12factor'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'carrierwave'
+# for aws cloud storage
+gem 'fog'
+# photo resizing
+gem "mini_magick"
 
 # Use unicorn as the app server
 # gem 'unicorn'
