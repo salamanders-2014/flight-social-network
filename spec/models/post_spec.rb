@@ -10,8 +10,6 @@ RSpec.describe Post, :type => :model do
     @user.destroy
   end
 
-  reflect_on_all_associations(:has_many)
-
   describe 'validations' do
 
     it "should have many photos" do
