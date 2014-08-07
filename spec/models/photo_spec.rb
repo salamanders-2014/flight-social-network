@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Photo, :type => :model do
 
 	before do
-		@user = User.create(first_name: "Bob", last_name: "Doyle", email: "impact@example.com")
+		@user = User.create(first_name: "Bob", last_name: "Doyle", email: "impact@example.com", password: "12345")
 		@post = Post.create(poster: @user)
-		@photo = Photo.create(poster: @user, description: "LOL Cat", posts: @post, url: "http://www.example.com/picture.png")
+		@photo = Photo.create(uploader: @user, description: "LOL Cat", posts: [@post], url: "http://www.example.com/picture.png")
 	end
 
 	describe 'attributes' do
@@ -15,7 +15,7 @@ RSpec.describe Photo, :type => :model do
 		end
 
 		it 'should have a url' do
-			expect(@photo.url).to eq("http://www.example.com/picture.png")
+			expect(@photo.url).to_not be_nil
 		end
 	end
 
@@ -29,15 +29,9 @@ RSpec.describe Photo, :type => :model do
 
 		context '#posts' do
 			it 'has many posts' do
-				expect(@photo.posts.empty?).to be_false
+				expect(@photo.posts.empty?).to eq(false)
 				expect(@photo.posts.length).to eq(1)
 			end
-		end
-	end
-
-	describe 'validations' do
-		it 'should have a valid url' do
-			expect(@photo.url).to be_valid
 		end
 	end
 
