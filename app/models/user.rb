@@ -1,20 +1,15 @@
 class User < ActiveRecord::Base
-  # statuses
+  has_secure_password
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+  
   has_many :statuses
-
-  # comments
   has_many :comments, foreign_key: "commenter_id"
-
-  # profile pics
   has_many :user_profile_pics
   has_many :profile_pics, through: :user_profile_pics, source: :photo
-
-  # has many posts
   has_many :posts, foreign_key: "poster_id"
-
-  # has many photos (in all posts)
-  has_many :photos, through: :posts
-
-  # has many uploaded photos
+  has_many :photos, through: :posts # has many photos (in all posts)
   has_many :uploaded_photos, class_name: "Photo", foreign_key: "uploader_id"
 end

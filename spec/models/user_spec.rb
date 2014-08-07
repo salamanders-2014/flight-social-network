@@ -3,45 +3,70 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
 
   context 'attributes and validations' do
-    before do 
-      @user1 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
-      @user1.save
+    before :each do 
+      @user1 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user2 = User.new(email: "quy2@dbc.com")
-      @user2.save
       @user3 = User.new
-      @user3.save
+      @user4 = User.new(first_name: "Quy", last_name: "Tran", email: "qqqqqq")
+      @user5 = User.new(first_name: "Quy", email: "quy@dbc.com")
+      @user6 = User.new(last_name: "Tran", email: "quy@dbc.com")
+      @user7 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user8 = User.new(first_name: "Mike", last_name: "Tran", email: "quy@dbc.com", password: "654321")
     end
 
-    after do 
+    after :each do 
       @user1.destroy
       @user2.destroy
       @user3.destroy
     end
 
-    # Testing create
-    it "user id must not be nil" do
-        expect(@user1.id).to be_an(Integer)
+    # Testing create validation
+
+    it 'should validates user\'s first_name before creating' do 
+      expect{@user2.save!}.to raise_error
+      expect{@user6.save!}.to raise_error
     end
 
-    it 'should validates user first_name and last_name before creating' do 
-      expect(@user2).to be_nil
+    it 'should validates user\'s last_name before creating' do 
+      expect{@user5.save!}.to raise_error
     end
 
     it 'should validates user email before creating' do
-      expect(@user3).to be_nil
+      expect{@user3.save!}.to raise_error
+    end
+
+    it 'should validates email format' do 
+      expect{@user4.save!}.to raise_error
+    end
+
+    it 'should validates password presence' do 
+      expect{@user7.save!}.to raise_error
+    end
+
+    it 'should validates uniqueness of email' do
+      @user1.save! 
+      expect{@user8.save!}.to raise_error
     end
 
 
     # Testing attributes
+    it "user id must not be nil" do
+        @user1.save!
+        expect(@user1.id).to be_an(Integer)
+    end
+
     it "should have first name" do
+        @user1.save!
         expect(@user1.first_name).to eq("Quy")
     end
     
     it "should have last name" do
+        @user1.save!
         expect(@user1.last_name).to eq("Tran")
     end
 
     it "should have email" do
+        @user1.save!
         expect(@user1.email).to eq("quy@dbc.com")
     end
   end
@@ -74,7 +99,7 @@ RSpec.describe User, :type => :model do
 
   context 'actual associations modification' do 
     before do 
-      @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user.save
     end
 

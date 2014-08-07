@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140806163235) do
   create_table "comments", force: true do |t|
     t.text     "text"
     t.integer  "commenter_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140806163235) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
