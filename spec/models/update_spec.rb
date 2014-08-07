@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Update, :type => :model do
-	
+
 	before do
 		@post = Post.create
 		@update = Update.create(text: "Cool bike, man", post: @post)
@@ -19,7 +19,7 @@ RSpec.describe Update, :type => :model do
 		end
 
 		it 'should be invalid without text' do
-			update = Update.new(text: "")
+			update = Update.new
 			expect(update).to be_invalid
 		end
 	end
