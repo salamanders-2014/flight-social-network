@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe Comment, :type => :model do
 
 	before do
-		@user_1 = User.create(first_name: "John", last_name: "Doe", email: "me@example.com")
-		@user_2 = User.create(first_name: "Kate", last_name: "Winslet", email: "you@example.com")
+		@user_1 = User.create(first_name: "John", last_name: "Doe", email: "me@example.com", password: "12345")
+		@user_2 = User.create(first_name: "Kate", last_name: "Winslet", email: "you@example.com", password: "12345")
 		@post = Post.create(poster: @user_1)
-		@comment = @post.comments.create(commenter: @user_2,text: "Happy Birthday Simon")
+		@comment = Comment.create(commenter: @user_2, text: "Happy Birthday Simon", post: @post)
 	end
 
 	describe 'attributes' do
