@@ -7,11 +7,6 @@ RSpec.describe Update, :type => :model do
 		@update = Update.create(text: "Cool bike, man", post: @post)
 	end
 
-	after do
-		@update.destroy
-		@post.destroy
-	end
-
 	describe 'validations' do
 		it 'should be valid with text' do
 			update = Update.new(text: "This should be valid")

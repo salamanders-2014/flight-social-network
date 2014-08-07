@@ -1,18 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Comment, :type => :model do
-	
+
 	before do
 		@user_1 = User.create(first_name: "John", last_name: "Doe", email: "me@example.com")
 		@user_2 = User.create(first_name: "Kate", last_name: "Winslet", email: "you@example.com")
 		@post = Post.create(poster: @user_1)
 		@comment = @post.comments.create(commenter: @user_2,text: "Happy Birthday Simon")
-	end
-
-	after do
-		@post.destroy
-		@user_1.destroy
-		@user_2.destroy
 	end
 
 	describe 'attributes' do
