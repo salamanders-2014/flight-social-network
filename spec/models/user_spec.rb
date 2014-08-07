@@ -11,6 +11,7 @@ RSpec.describe User, :type => :model do
       @user5 = User.new(first_name: "Quy", email: "quy@dbc.com")
       @user6 = User.new(last_name: "Tran", email: "quy@dbc.com")
       @user7 = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com")
+      @user8 = User.new(first_name: "Mike", last_name: "Tran", email: "quy@dbc.com", password: "654321")
     end
 
     after :each do 
@@ -40,6 +41,11 @@ RSpec.describe User, :type => :model do
 
     it 'should validates password presence' do 
       expect{@user7.save!}.to raise_error
+    end
+
+    it 'should validates uniqueness of email' do
+      @user1.save! 
+      expect{@user8.save!}.to raise_error
     end
 
 
