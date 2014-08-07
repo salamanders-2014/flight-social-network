@@ -1,13 +1,21 @@
-# .travis.yml
 language: ruby
 rvm:
-  - 2.1.2
+- 2.1.2
 env:
-  - DB=postgresql
+- DB=postgresql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake
 before_script:
-  - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database "flight-social-network_test"' -U postgres
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database "flight-social-network_test"' -U postgres
+deploy:
+  provider: s3
+  access_key_id:
+    secure: K3CKckZF3fcZoBDtUwYkH962tZc3flvW8GpTd7ly4rLIhjPaiFEex7dETdLu1OfGu67l9dSwP6hrdRfJ84Ptqi3octlM/8VX1cVLrqPYtiDVNOmLJCiVyyo8TfaO2nfY5ISTNZ55Z6yVxduW7m26LAl5xU7PODln06dPfacVKQw=
+  secret_access_key:
+    secure: MHYfViV3abBTqLTQ81HCZ22dXYIdnrQPZZWu6Wwa4fd7406mgEvJ8x2AFZzAQN8ftguJ7HvcH25Slyfd9LcKP3Qn3FG1kafcLj65WdyDs4CDb1AzQcw2r+Uq8CYnD8bKfMKFG1coNjVMk9iLwyaouR0xE11vZDPWSmd2SD8uLgk=
+  bucket:
+    secure: ayiRwxLvSvD/5N7T0lugQ2LxsrEo+2LviSx+/fSoL/JUIOq0avnr5R3iOkTIqAmogSmlJf2wAiV97zgyq6yToTSJA38xEM40BgLJw3CkTBscwuiVDcXQg8h6hDmT+lTtfXmtY/gx7k2ximA+dEbM+BVAcoljNru/DpIh5j84iRQ=
+  acl: !ruby/string:HighLine::String private
