@@ -3,19 +3,21 @@ Flight Social Network
 
 ![Build Status](https://travis-ci.org/simongondeck/flight-social-network.svg?branch=default-controller-photo)
 
-Flight is a social networking playground where users post their profiles and show their pictures. For Awesome Fliers.
+Flight is a social networking playground where users post their profiles and show their pictures.
 
-![Pelicans in Flight](http://openclipart.org/image/800px/svg_to_png/190060/pelicans-in-flight.png)
+![Pelicans In Flight](http://i.imgur.com/HdxGnvv.jpg)
 
 ## Features
 
-After signing in, users can:
-- update their statuses with text or pictures.
-- comment on a status
+Users can create an account or log-in to do the following:
+- update their posts with text or pictures.
+- comment on anyone's status
+- create statuses (that no one else needs to comment on!)
+- be a friend to someone else, no limits!
 
 ## Website
 
-Flight is a website that is deployed with Heroku. You can visit it soon.
+[Flitr](http://flitr.herokuapp.com/) (sounds like 'Flirt') is hosted by Heroku and uses Amazon S3.
 
 ## Contribute
 
