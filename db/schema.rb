@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140806163235) do
   create_table "photos", force: true do |t|
     t.string   "description"
     t.integer  "uploader_id"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
