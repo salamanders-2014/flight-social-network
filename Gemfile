@@ -30,6 +30,8 @@ gem 'rails_12factor'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'carrierwave'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -40,9 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara', '~> 2.4.1'
   gem 'launchy', '~> 2.4.2'
   gem 'factory_girl', '~> 4.4.0'
 end
-

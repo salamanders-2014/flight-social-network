@@ -1,17 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Photo, :type => :model do
-	
+
 	before do
 		@user = User.create(first_name: "Bob", last_name: "Doyle", email: "impact@example.com")
 		@post = Post.create(poster: @user)
 		@photo = Photo.create(poster: @user, description: "LOL Cat", posts: @post, url: "http://www.example.com/picture.png")
-	end
-
-	after do
-		@photo.destroy
-		@post.destroy
-		@user.destroy
 	end
 
 	describe 'attributes' do
