@@ -10,30 +10,37 @@ RSpec.describe Post, :type => :model do
     @user.destroy
   end
 
-  describe 'validations' do
-
+  describe 'associations' do
     it "should have many photos" do
       t = Post.reflect_on_association(:photos)
-      t.macro.should == :has_many
+      expect(t.macro).to eq(:has_many)
     end
 
     it 'should have many photos' do
         photo = Photo.create(description: "fuck off everyone")
-        expect(post.photo).to be_valid
+        post = Post.create(poster: @user)
+        post.photos << photo
+        expect(post.photos.length).to eq(1)
+        expect(post.photos[0]).to eq(photo)
     end
 
     it "should have many comments" do
       t = Post.reflect_on_association(:comments)
-      t.macro.should == :has_many
+      expect(t.macro).to eq(:has_many)
     end
 
-    it 'should have many comments' do
-        comment = Comment.create(text: "ayy", commenter: 1)
-        expect(post.comment).to be_valid
+    it 'should return comment objects' do
+        post = Post.create(poster: @user)
+        comment = Comment.create(text: "ayy", commenter: @user, post: post)
+        expect(post.comments.length).to eq(1)
+        expect(post.comments[0]).to be_a Comment
     end
 
+  end
+
+  describe 'validations' do
     it 'should be valid with text' do
-      post = Post.new(poster: 1)
+      post = Post.new(poster: @user)
       expect(post).to be_valid
     end
 
@@ -45,7 +52,9 @@ RSpec.describe Post, :type => :model do
 
   describe '#poster' do
     it 'should return the id of who posted it' do
-      expect(@post.poster).to be_a Integer
+      post = Post.create(poster: @user)
+      expect(post.poster).to be_a User
+      expect(post.poster).to eq(@user)
     end
   end
 
