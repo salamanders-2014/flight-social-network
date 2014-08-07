@@ -3,7 +3,7 @@ Flight Social Network
 
 ![Build Status](https://travis-ci.org/simongondeck/flight-social-network.svg?branch=default-controller-photo)
 
-Flight is a social networking playground where users post their profiles and show their pictures.
+Flight is a social networking playground where users post their profiles and show their pictures. For Awesome Fliers.
 
 ![Pelicans in Flight](http://openclipart.org/image/800px/svg_to_png/190060/pelicans-in-flight.png)
 
