@@ -14,6 +14,18 @@ RSpec.describe UserProfilePic do
 		end
 	end
 
+	describe 'validations' do
+		it 'should be valid with user_id and photo_id' do
+			pic = UserProfilePic.new(user_id: 1, photo_id: 1)
+			expect(pic).to be_valid
+		end
+
+		it 'should be invalid without text' do
+			pic = UserProfilePic.new
+			expect(pic).to be_invalid
+		end
+	end
+
 	describe 'methods' do
 
 		before do
