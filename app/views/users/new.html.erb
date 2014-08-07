@@ -1,8 +1,7 @@
 <div class="container">
-  <h1>FLIGHT</h1>
-  <h3>Sign up now to fly with your friends</h3>
+  <h1>NEW USER</h1>
 
-  <%= form_for :user do |f| %>
+  <%= form_for :user, url: users_path do |f| %>
     <p>
       <%= f.label :first_name %><br>
       <%= f.text_field :string %>
@@ -19,7 +18,7 @@
     </p>
 
     <p>
-      <%= f.label :password %><br>
+      <%= f.label :password_digest %><br>
       <%= f.text_field :string %>
     </p>
 
