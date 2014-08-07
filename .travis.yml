@@ -3,11 +3,11 @@ rvm:
 - 2.1.2
 env:
 - DB=postgresql
-	global:
-    - AWS_S3_REGION="us-west-2"
-    - AWS_S3_BUCKET="flight-dbc-network"
-  	- secure: sIVOzZQCEw/vMS84S6GfAKNzb/PPzMjNpgX0Knppbh3Yu5tRSdNfHz6ppKB9+xLESUVxBt/vMYXQMX7SWU3qFIO5oCG7QfTZON5D1YU+UH2TNaRYHdKOX2ZZJd33C6/HxxUQq7h30uOI1ndlIB/y2zEjLVZ4BWSY8sf48vzBemM=
-  	- secure: eo4GIW7+dSOf8PckdrUQXYTt0IWEDqITDviDdbXAHmCD22Zb2mn8s5Th39cxBsBJqTri6FpcAmdny9SLNuqCwUyxzrWZk414Hib1I6B5GxLFL4iEo86IexaEDGxwdJyV+Wl4qx3rGoYp6QL+jxDa5iUerFn8coLuWNzu/XNRttA=
+global:
+- AWS_S3_REGION="us-west-2"
+- AWS_S3_BUCKET="flight-dbc-network"
+- secure: sIVOzZQCEw/vMS84S6GfAKNzb/PPzMjNpgX0Knppbh3Yu5tRSdNfHz6ppKB9+xLESUVxBt/vMYXQMX7SWU3qFIO5oCG7QfTZON5D1YU+UH2TNaRYHdKOX2ZZJd33C6/HxxUQq7h30uOI1ndlIB/y2zEjLVZ4BWSY8sf48vzBemM=
+- secure: eo4GIW7+dSOf8PckdrUQXYTt0IWEDqITDviDdbXAHmCD22Zb2mn8s5Th39cxBsBJqTri6FpcAmdny9SLNuqCwUyxzrWZk414Hib1I6B5GxLFL4iEo86IexaEDGxwdJyV+Wl4qx3rGoYp6QL+jxDa5iUerFn8coLuWNzu/XNRttA=
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
