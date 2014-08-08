@@ -9,7 +9,6 @@ before_script:
 - cp config/database.travis.yml config/database.yml
 - psql -c 'create database "flight-social-network_test"' -U postgres
 env:
-  matrix:
-  - DB=postgresql
-  - secure: GytZaZZXFbQNOVTtAYO4Syaec2PV5RBErD+Tc8DRVFu3MzAEtC+a2gvHEOmgwR0EEFnLZS2an+hIAn+PmbjrySnWpjuVrM5/cQOrV06O3uRFH5uzfJpwTgHlhDfuZBrCvbSfPgrpNGroAU1KWPPwK3KxcpL7bMCZvb7WRxVhSnw=
-  - secure: V+7/pKsU+x65XM8QNu0RuDEz80F/dgOPfOtkEzH+RH2Pc/gd4VB+w+wjOa1a1vEJ7pRQc91jnmtKVSD/kIatBKvKLvQ60pz8aAmwPeQToRnq8MWK4UO/DJngd8HQrdnLHGcHdB/cDq6sx/d5bVary0KlOu6f+jKPrZzUfTxwPeA=
+  global:
+  - secure: "GytZaZZXFbQNOVTtAYO4Syaec2PV5RBErD+Tc8DRVFu3MzAEtC+a2gvHEOmgwR0EEFnLZS2an+hIAn+PmbjrySnWpjuVrM5/cQOrV06O3uRFH5uzfJpwTgHlhDfuZBrCvbSfPgrpNGroAU1KWPPwK3KxcpL7bMCZvb7WRxVhSnw="
+  - secure: "V+7/pKsU+x65XM8QNu0RuDEz80F/dgOPfOtkEzH+RH2Pc/gd4VB+w+wjOa1a1vEJ7pRQc91jnmtKVSD/kIatBKvKLvQ60pz8aAmwPeQToRnq8MWK4UO/DJngd8HQrdnLHGcHdB/cDq6sx/d5bVary0KlOu6f+jKPrZzUfTxwPeA="
