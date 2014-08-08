@@ -65,7 +65,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  context 'associations type' do
+  pending 'associations type' do
     it 'should have many statuses' do
       expect(User.reflect_on_association(:statuses).macro).to eq(:has_many)
     end
@@ -91,7 +91,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  context 'actual associations modification' do
+  pending 'actual associations modification' do
     before do
       @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user.save
