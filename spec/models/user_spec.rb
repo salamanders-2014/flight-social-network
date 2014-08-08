@@ -91,7 +91,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  pending 'actual associations modification' do
+  describe 'actual associations modification' do
     before do
       @user = User.new(first_name: "Quy", last_name: "Tran", email: "quy@dbc.com", password: "123456")
       @user.save

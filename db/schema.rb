@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140808151937) do
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "commenter_id"
     t.integer  "post_id"
     t.text     "text"
     t.datetime "created_at"
@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 20140808151937) do
   end
 
   create_table "photos", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "uploader_id"
+    t.integer  "post_id"
     t.string   "description"
     t.string   "url"
     t.datetime "created_at"
@@ -33,7 +34,8 @@ ActiveRecord::Schema.define(version: 20140808151937) do
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "poster_id"
+    t.integer  "photo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140808151937) do
   create_table "user_profile_pics", force: true do |t|
     t.integer  "user_id"
     t.integer  "photo_id"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
