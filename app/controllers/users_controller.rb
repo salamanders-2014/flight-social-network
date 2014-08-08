@@ -9,18 +9,19 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to @user
-  end
 
-  private
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+    if @user.save
+      flash[:success] = "Welcome to FLIGHT"
+      redirect_to @user
+    else
+      render 'new'
     end
+  end
 
   def edit
   end
@@ -34,5 +35,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy!
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+    end
 
 end
