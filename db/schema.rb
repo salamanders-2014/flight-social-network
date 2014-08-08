@@ -11,43 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807185314) do
+ActiveRecord::Schema.define(version: 20140808151937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.text     "text"
-    t.integer  "commenter_id"
+    t.integer  "user_id"
     t.integer  "post_id"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "photos", force: true do |t|
+    t.integer  "user_id"
     t.string   "description"
-    t.integer  "uploader_id"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "post_photos", force: true do |t|
-    t.integer  "post_id"
-    t.integer  "photo_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "posts", force: true do |t|
-    t.integer  "poster_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "statuses", force: true do |t|
-    t.string   "text"
     t.integer  "user_id"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,8 +53,6 @@ ActiveRecord::Schema.define(version: 20140807185314) do
   end
 
   create_table "user_friends", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,5 +72,7 @@ ActiveRecord::Schema.define(version: 20140807185314) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
