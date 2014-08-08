@@ -65,7 +65,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  pending 'associations type' do
+  context 'associations type' do
     it 'should have many statuses' do
       expect(User.reflect_on_association(:statuses).macro).to eq(:has_many)
     end
